@@ -5,30 +5,37 @@ import SpriteKit
 public class FieldSampler {
 
     /// Scene that owns this sampler.
-    private weak var scene: SKScene!
+    public weak var scene: SKScene? {
+        didSet {
+            updateSpacing()
+        }
+    }
 
     /// View responsible to draw the field sampled.
     private weak var drawView: DrawLinesView?
 
     /// Number of indicators to be displayed in the height of the scene.
-    private let indicatorsPerColumn: Int = 36
+    private let indicatorsPerColumn: Int
 
     /// Number of indicators to be displayed in the width of the scene.
     ///
     /// Calculated based on `indicatorsPerColumn`, such that the spacing is equal.
-    private let indicatorsPerLine: Int
+    private var indicatorsPerLine: Int = 20
 
     /// The spacing between field indicators, both on vertical and horizontal directions.
-    private let indicatorSpacing: CGFloat
+    private var indicatorSpacing: CGFloat = 100
 
-    public init(scene: SKScene, view: DrawLinesView?) {
-        self.scene = scene
+    /// Creates a field sampler.
+    /// - Parameters:
+    ///   - view: The view that will be told to draw the lines representing the field.
+    ///   - indicatorsPerColumn: Number of field indicators in a vertical column.
+    ///   Will be used to create equal spaced indicators in horizontal lines as well.
+    public init(view: DrawLinesView?, indicatorsPerColumn: Int = 36) {
         self.drawView = view
-        indicatorSpacing = scene.size.height / CGFloat(indicatorsPerColumn)
-        indicatorsPerLine = Int(ceil(scene.size.width / indicatorSpacing))
+        self.indicatorsPerColumn = indicatorsPerColumn
     }
 
-    /// Sample fields in scene and ask `drawView` to draw them.
+    /// Sample fields in `scene` and ask `drawView` to draw them.
     public func updateLines() {
         if let pointsToDraw = calculatePointsToDraw() {
             drawView?.lines = pointsToDraw
@@ -40,6 +47,11 @@ public class FieldSampler {
     /// sample the scene field and convert it to the points to draw in the view using `scaleFieldToIndicator`
     /// and `scene.convertPoint(toView:)`.
     private func calculatePointsToDraw() -> [[CGPoint]]? {
+        guard let scene else {
+            print("No scene found when calculating points to draw")
+            return nil
+        }
+
         var pointsToDraw = [[CGPoint]]()
 
         for yIndex in 0 ..< indicatorsPerColumn {
@@ -75,6 +87,11 @@ public class FieldSampler {
 
     /// Sample the scene field at `position` and transform it into a `CGVector`.
     private func sampleField(at position: CGPoint) -> CGVector? {
+        guard let scene else {
+            print("No scene found when sampling field")
+            return nil
+        }
+
         let field = scene.physicsWorld.sampleFields(at: vector_float3(
             Float(position.x),
             Float(position.y),
@@ -104,5 +121,14 @@ public class FieldSampler {
     /// field, but can be better for the visualization.
     private func scaleFieldToIndicator(_ field: CGVector) -> CGVector {
         return field.normalized().multiply(scalar: 15 * pow(field.magnitude, 0.3))
+    }
+
+    /// Update `indicatorSpacing` and `indicatorsPerLine` according to the scene size
+    /// and the sampler's `indicatorsPerColumn`.
+    private func updateSpacing() {
+        if let scene {
+            indicatorSpacing = scene.size.height / CGFloat(indicatorsPerColumn)
+            indicatorsPerLine = Int(ceil(scene.size.width / indicatorSpacing))
+        }
     }
 }

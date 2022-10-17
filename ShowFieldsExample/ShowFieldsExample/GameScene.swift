@@ -13,7 +13,11 @@ class GameScene: SKScene {
     }
 
     private var fields: [UITouch: SKFieldNode] = [:]
-    var fieldSampler: FieldSampler?
+    var fieldSampler: FieldSampler? {
+        didSet {
+            fieldSampler?.scene = self
+        }
+    }
 
     override func didMove(to view: SKView) {
         view.isMultipleTouchEnabled = true
@@ -24,14 +28,7 @@ class GameScene: SKScene {
             createField(touch: touch)
         }
 
-        let ball = SKShapeNode(circleOfRadius: 10)
-        ball.position = CGPoint(x: 300, y: 300)
-        ball.fillColor = .red
-        ball.physicsBody = SKPhysicsBody(circleOfRadius: 10)
-        ball.physicsBody?.fieldBitMask = UInt32.max
-        ball.physicsBody?.charge = 3
-        ball.physicsBody?.mass = 100
-        addChild(ball)
+        createBall()
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -69,6 +66,17 @@ class GameScene: SKScene {
             field.removeFromParent()
             fields.removeValue(forKey: touch)
         }
+    }
+
+    private func createBall() {
+        let ball = SKShapeNode(circleOfRadius: 10)
+        ball.position = CGPoint(x: 800, y: 450)
+        ball.fillColor = .red
+        ball.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+        ball.physicsBody?.fieldBitMask = UInt32.max
+        ball.physicsBody?.charge = 3
+        ball.physicsBody?.mass = 25
+        addChild(ball)
     }
 
     override func update(_ currentTime: TimeInterval) {

@@ -8,7 +8,7 @@ class GameView: UIView {
 
     private lazy var scene: GameScene = {
         let scene = GameScene()
-        scene.fieldSampler = FieldSampler(scene: scene, view: fieldView)
+        scene.fieldSampler = FieldSampler(view: fieldView)
         scene.scaleMode = .aspectFit
         return scene
     }()
