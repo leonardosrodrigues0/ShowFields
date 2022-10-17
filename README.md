@@ -4,6 +4,10 @@ Apple's SpriteKit game framework allows the developer to use different kinds of 
 
 This package was created to easily add field visualization to a Swift project, inspired in the code used in the [Field Control Game](https://apps.apple.com/us/app/field-control-game/id1628106038).
 
+## Empty Scene Disclaimer
+
+SpriteKit fields are not simulated/sampled correctly if the scene has no nodes to interact with them. This means that **the package will not work properly if there are only fields in the scene**. That's also why the example project spawn ball with charges in new touch and does not contain only fields that follow the player's touches.
+
 ## Usage
 
 The `ShowFieldsExample` project provides an example on how to add the package components to your SpriteKit project.
@@ -13,3 +17,9 @@ The `ShowFieldsExample` project provides an example on how to add the package co
 2. Add a `FieldSampler` to your `SKScene`. A reference to the `DrawLinesView` must be passed in the sampler initializer so that it can tell the view what to draw.
 
 3. Call `updateLines()` in your update loop (typically in your scene's `update(_:)` method).
+
+## Implementation Overview
+
+To measure the scene's fields, the `FieldSampler` uses the [`sampleFields(at:)`](https://developer.apple.com/documentation/spritekit/skphysicsworld/1449627-samplefields) method of [SKPhysicsWorld](https://developer.apple.com/documentation/spritekit/skphysicsworld). The field is sampled in several points in the scene and then translated into lines to be drawn by `DrawLinesView` in UIKit in every cycle.
+
+During the first implementation of this idea, attempts of drawing the lines with SpriteKit were made, but the performance was a huge issue.
