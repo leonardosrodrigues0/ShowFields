@@ -32,14 +32,6 @@ class GameScene: SKScene {
         ball.physicsBody?.charge = 3
         ball.physicsBody?.mass = 100
         addChild(ball)
-
-//        let field = SKFieldNode.electricField()
-//        field.position = CGPoint(x: 300, y: 300)
-//        let node = SKShapeNode(circleOfRadius: 20)
-//        node.fillColor = .red
-//        node.position = CGPoint(x: 300, y: 300)
-//        addChild(field)
-//        addChild(node)
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
