@@ -4,6 +4,8 @@ Apple's SpriteKit game framework allows the developer to use different kinds of 
 
 This package was created to easily add field visualization to a Swift project, inspired in the code used in the [Field Control Game](https://apps.apple.com/us/app/field-control-game/id1628106038).
 
+![Example of package usage](example.png "Example of package usage")
+
 ## Empty Scene Disclaimer
 
 SpriteKit fields are not simulated/sampled correctly if the scene has no nodes to interact with them. This means that **the package will not work properly if there are only fields in the scene**. That's also why the example project spawn ball with charges in new touch and does not contain only fields that follow the player's touches.
