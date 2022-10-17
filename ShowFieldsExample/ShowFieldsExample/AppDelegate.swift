@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  ShowFieldsExample
-//
-//  Created by Leonardo de Sousa Rodrigues on 19/09/22.
-//
-
 import UIKit
 
 @main

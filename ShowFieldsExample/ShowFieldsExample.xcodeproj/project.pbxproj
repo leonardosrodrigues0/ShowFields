@@ -9,13 +9,12 @@
 /* Begin PBXBuildFile section */
 		A718F26228E3169900F41DD3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A718F26128E3169900F41DD3 /* .gitignore */; };
 		A718F26428E316AB00F41DD3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A718F26328E316AB00F41DD3 /* .swiftlint.yml */; };
+		A718F26A28E3287400F41DD3 /* ShowFields in Frameworks */ = {isa = PBXBuildFile; productRef = A718F26928E3287400F41DD3 /* ShowFields */; };
 		A71C6C8628D8AE340049104D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71C6C8528D8AE340049104D /* AppDelegate.swift */; };
 		A71C6C8828D8AE340049104D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71C6C8728D8AE340049104D /* SceneDelegate.swift */; };
 		A71C6C8A28D8AE340049104D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71C6C8928D8AE340049104D /* ViewController.swift */; };
 		A71C6C8F28D8AE350049104D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A71C6C8E28D8AE350049104D /* Assets.xcassets */; };
 		A71C6C9228D8AE350049104D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A71C6C9028D8AE350049104D /* LaunchScreen.storyboard */; };
-		A71C6C9E28D8AF090049104D /* DrawLinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71C6C9928D8AF080049104D /* DrawLinesView.swift */; };
-		A71C6C9F28D8AF090049104D /* FieldSampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71C6C9A28D8AF080049104D /* FieldSampler.swift */; };
 		A71C6CA028D8AF090049104D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71C6C9B28D8AF080049104D /* GameScene.swift */; };
 		A71C6CA128D8AF090049104D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71C6C9C28D8AF080049104D /* Extensions.swift */; };
 		A71C6CA228D8AF090049104D /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71C6C9D28D8AF090049104D /* GameView.swift */; };
@@ -24,6 +23,7 @@
 /* Begin PBXFileReference section */
 		A718F26128E3169900F41DD3 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A718F26328E316AB00F41DD3 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		A718F26728E31A5800F41DD3 /* ShowFields */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ShowFields; path = ../ShowFields; sourceTree = "<group>"; };
 		A71C6C8228D8AE340049104D /* ShowFieldsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowFieldsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A71C6C8528D8AE340049104D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A71C6C8728D8AE340049104D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,8 +31,6 @@
 		A71C6C8E28D8AE350049104D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A71C6C9128D8AE350049104D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A71C6C9328D8AE350049104D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A71C6C9928D8AF080049104D /* DrawLinesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawLinesView.swift; sourceTree = "<group>"; };
-		A71C6C9A28D8AF080049104D /* FieldSampler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldSampler.swift; sourceTree = "<group>"; };
 		A71C6C9B28D8AF080049104D /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		A71C6C9C28D8AF080049104D /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A71C6C9D28D8AF090049104D /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -43,19 +41,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A718F26A28E3287400F41DD3 /* ShowFields in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A718F26628E31A5800F41DD3 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				A718F26728E31A5800F41DD3 /* ShowFields */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		A718F26828E3287400F41DD3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A71C6C7928D8AE340049104D = {
 			isa = PBXGroup;
 			children = (
+				A718F26628E31A5800F41DD3 /* Packages */,
 				A718F26328E316AB00F41DD3 /* .swiftlint.yml */,
 				A718F26128E3169900F41DD3 /* .gitignore */,
 				A71C6C8428D8AE340049104D /* ShowFieldsExample */,
 				A71C6C8328D8AE340049104D /* Products */,
+				A718F26828E3287400F41DD3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,9 +93,7 @@
 				A71C6C8728D8AE340049104D /* SceneDelegate.swift */,
 				A71C6C8928D8AE340049104D /* ViewController.swift */,
 				A71C6C9D28D8AF090049104D /* GameView.swift */,
-				A71C6C9928D8AF080049104D /* DrawLinesView.swift */,
 				A71C6C9B28D8AF080049104D /* GameScene.swift */,
-				A71C6C9A28D8AF080049104D /* FieldSampler.swift */,
 				A71C6C9C28D8AF080049104D /* Extensions.swift */,
 			);
 			path = ShowFieldsExample;
@@ -102,6 +116,9 @@
 			dependencies = (
 			);
 			name = ShowFieldsExample;
+			packageProductDependencies = (
+				A718F26928E3287400F41DD3 /* ShowFields */,
+			);
 			productName = ShowFieldsExample;
 			productReference = A71C6C8228D8AE340049104D /* ShowFieldsExample.app */;
 			productType = "com.apple.product-type.application";
@@ -182,8 +199,6 @@
 				A71C6CA028D8AF090049104D /* GameScene.swift in Sources */,
 				A71C6C8A28D8AE340049104D /* ViewController.swift in Sources */,
 				A71C6C8628D8AE340049104D /* AppDelegate.swift in Sources */,
-				A71C6C9F28D8AF090049104D /* FieldSampler.swift in Sources */,
-				A71C6C9E28D8AF090049104D /* DrawLinesView.swift in Sources */,
 				A71C6C8828D8AE340049104D /* SceneDelegate.swift in Sources */,
 				A71C6CA228D8AF090049104D /* GameView.swift in Sources */,
 				A71C6CA128D8AF090049104D /* Extensions.swift in Sources */,
@@ -394,6 +409,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A718F26928E3287400F41DD3 /* ShowFields */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ShowFields;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A71C6C7A28D8AE340049104D /* Project object */;
 }

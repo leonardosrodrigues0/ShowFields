@@ -2,10 +2,10 @@ import SpriteKit
 
 /// Class responsible for sampling the scene's field and
 /// translating it into lines to be drawn.
-class FieldSampler {
+public class FieldSampler {
 
     /// Scene that owns this sampler.
-    private weak var scene: GameScene!
+    private weak var scene: SKScene!
 
     /// View responsible to draw the field sampled.
     private weak var drawView: DrawLinesView?
@@ -21,7 +21,7 @@ class FieldSampler {
     /// The spacing between field indicators, both on vertical and horizontal directions.
     private let indicatorSpacing: CGFloat
 
-    init(scene: GameScene, view: DrawLinesView?) {
+    public init(scene: SKScene, view: DrawLinesView?) {
         self.scene = scene
         self.drawView = view
         indicatorSpacing = scene.size.height / CGFloat(indicatorsPerColumn)
@@ -29,7 +29,7 @@ class FieldSampler {
     }
 
     /// Sample fields in scene and ask `drawView` to draw them.
-    func updateLines() {
+    public func updateLines() {
         if let pointsToDraw = calculatePointsToDraw() {
             drawView?.lines = pointsToDraw
             drawView?.displayNow()
@@ -51,7 +51,7 @@ class FieldSampler {
 
                 // Return to avoid drawing field in a
                 // bug situation (explained in `sampleField(scene:at:)`).
-                guard let field = sampleField(scene: scene, at: position) else {
+                guard let field = sampleField(at: position) else {
                     print("Not updating field indicators this frame")
                     return nil
                 }
@@ -74,7 +74,7 @@ class FieldSampler {
     }
 
     /// Sample the scene field at `position` and transform it into a `CGVector`.
-    private func sampleField(scene: GameScene, at position: CGPoint) -> CGVector? {
+    private func sampleField(at position: CGPoint) -> CGVector? {
         let field = scene.physicsWorld.sampleFields(at: vector_float3(
             Float(position.x),
             Float(position.y),

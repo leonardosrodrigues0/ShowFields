@@ -1,5 +1,6 @@
 import UIKit
 import SpriteKit
+import ShowFields
 
 /// Game `UIView` that displays both a `SKView` with the game and
 /// a `FieldView` for field visualization in the background.
